@@ -22,8 +22,39 @@ export default function Home() {
   const [error, setError] = useState('');
   const [filter, setFilter] = useState<TaskType | 'all'>('all');
   const [tasks] = useState<Task[]>([
-    { id: '1', title: 'Sample Team Task', status: 'todo', type: 'team' },
-    { id: '2', title: 'Sample OpenClaw Task', status: 'in-progress', type: 'openclaw' },
+    // TODO - Team Tasks
+    { id: '1', title: 'Migrate PopLinks database to AWS RDS', status: 'todo', type: 'team', assignee: 'Gaurav' },
+    { id: '2', title: 'Set up SSL certificates for new domains', status: 'todo', type: 'team', assignee: 'Pranay' },
+    { id: '3', title: 'Configure Cloudflare DNS for mintbird.com', status: 'todo', type: 'team', assignee: 'Dev Team' },
+    { id: '4', title: 'Update Course Sprout API rate limiting', status: 'todo', type: 'team', assignee: 'Backend Team' },
+    
+    // TODO - OpenClaw Tasks
+    { id: '5', title: 'Add Docker container support for OpenClaw', status: 'todo', type: 'openclaw', assignee: 'Gaurav' },
+    { id: '6', title: 'Build agent marketplace integration', status: 'todo', type: 'openclaw', assignee: 'Pacino' },
+    { id: '7', title: 'Implement session memory persistence', status: 'todo', type: 'openclaw', assignee: 'Dev Team' },
+    
+    // IN PROGRESS - Team Tasks
+    { id: '8', title: 'Deploy Global Control Center v2.1', status: 'in-progress', type: 'team', assignee: 'Pranay' },
+    { id: '9', title: 'Fix Letterman image upload bug', status: 'in-progress', type: 'team', assignee: 'Frontend Team' },
+    { id: '10', title: 'Optimize MintBird funnel loading speed', status: 'in-progress', type: 'team', assignee: 'Gaurav' },
+    { id: '11', title: 'Configure backup server in Singapore', status: 'in-progress', type: 'team', assignee: 'DevOps' },
+    
+    // IN PROGRESS - OpenClaw Tasks
+    { id: '12', title: 'Build Chrome extension relay v2', status: 'in-progress', type: 'openclaw', assignee: 'Pacino' },
+    { id: '13', title: 'Add multi-node support for agents', status: 'in-progress', type: 'openclaw', assignee: 'Dev Team' },
+    { id: '14', title: 'Update OpenClaw docs for v1.5', status: 'in-progress', type: 'openclaw', assignee: 'Pacino' },
+    
+    // DONE - Team Tasks
+    { id: '15', title: 'Renew coursesprout.com domain registration', status: 'done', type: 'team', assignee: 'Chad' },
+    { id: '16', title: 'Set up monitoring for all VPS servers', status: 'done', type: 'team', assignee: 'DevOps' },
+    { id: '17', title: 'Implement Vizard API integration', status: 'done', type: 'team', assignee: 'Pacino' },
+    { id: '18', title: 'Deploy Article Board to production', status: 'done', type: 'team', assignee: 'Pacino' },
+    
+    // DONE - OpenClaw Tasks
+    { id: '19', title: 'Add Telegram channel support', status: 'done', type: 'openclaw', assignee: 'Dev Team' },
+    { id: '20', title: 'Build cron job scheduler UI', status: 'done', type: 'openclaw', assignee: 'Pacino' },
+    { id: '21', title: 'Integrate Post Bridge API', status: 'done', type: 'openclaw', assignee: 'Pacino' },
+    { id: '22', title: 'Create NavigationSidebar component', status: 'done', type: 'openclaw', assignee: 'Pacino' },
   ]);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -111,13 +142,20 @@ export default function Home() {
               </h2>
               <div className="space-y-3">
                 {getTasksByStatus(status).map((task) => (
-                  <div key={task.id} className="bg-slate-700 p-3 rounded-lg">
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      task.type === 'team' ? 'bg-purple-600' : 'bg-blue-600'
-                    } text-white`}>
-                      {task.type}
-                    </span>
-                    <p className="text-white mt-2">{task.title}</p>
+                  <div key={task.id} className="bg-slate-700 p-3 rounded-lg hover:bg-slate-600 transition-colors">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        task.type === 'team' ? 'bg-purple-600' : 'bg-blue-600'
+                      } text-white font-medium`}>
+                        {task.type}
+                      </span>
+                      {task.assignee && (
+                        <span className="text-xs text-slate-400">
+                          {task.assignee}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-white text-sm leading-relaxed">{task.title}</p>
                   </div>
                 ))}
               </div>
