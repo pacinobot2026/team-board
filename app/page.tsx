@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import NavigationSidebar from './components/NavigationSidebar';
 
 type TaskType = 'team' | 'openclaw';
 type TaskStatus = 'todo' | 'in-progress' | 'done';
@@ -37,24 +38,27 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <form onSubmit={handleLogin} className="bg-slate-800 p-8 rounded-lg shadow-xl w-80">
-          <h2 className="text-2xl font-bold text-white mb-4">Team Board</h2>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
-            className="w-full bg-slate-700 text-white px-4 py-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors"
-          >
-            Enter
-          </button>
-        </form>
+      <div style={{ display: 'flex', minHeight: '100vh' }}>
+        <NavigationSidebar />
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center" style={{ flex: 1 }}>
+          <form onSubmit={handleLogin} className="bg-slate-800 p-8 rounded-lg shadow-xl w-80">
+            <h2 className="text-2xl font-bold text-white mb-4">Team Board</h2>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+              className="w-full bg-slate-700 text-white px-4 py-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors"
+            >
+              Enter
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -67,8 +71,10 @@ export default function Home() {
     filteredTasks.filter(task => task.status === status);
 
   return (
-    <div className="min-h-screen bg-slate-900 p-8">
-      <div className="max-w-6xl mx-auto">
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#0f172a' }}>
+      <NavigationSidebar />
+      <div className="min-h-screen bg-slate-900 p-8" style={{ flex: 1 }}>
+        <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-white">Team Project Board</h1>
           <button
@@ -119,6 +125,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }
