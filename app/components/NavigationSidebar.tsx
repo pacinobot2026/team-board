@@ -1,63 +1,44 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const NAV_ITEMS = [
   { id: 'command-center', label: 'OpenClaw Command Center', icon: '🎛️', href: 'https://dashboard-gilt-one-zc4y5uu95v.vercel.app' },
   { id: 'custom-commands', label: 'Custom Command Engine', icon: '⚙️', href: '#' },
   { id: 'team', label: 'Team Board', icon: '👥', href: 'https://kanban-rho-ivory.vercel.app' },
-  { id: 'projects', label: 'Project Board', icon: '📋', href: 'https://vizard-clips-dashboard.vercel.app/projects' },
-  { id: 'articles', label: 'Article Board', icon: '📰', href: 'https://vizard-clips-dashboard.vercel.app/articles' },
-  { id: 'video', label: 'Video Cue System', icon: '🎬', href: 'https://vizard-clips-dashboard.vercel.app/dashboard' },
-  { id: 'ideas', label: 'Idea Board', icon: '💡', href: 'https://vizard-clips-dashboard.vercel.app/ideas' },
+  { id: 'projects', label: 'Project Board', icon: '📋', href: 'https://kanban-rho-ivory.vercel.app' },
+  { id: 'articles', label: 'Article Board', icon: '📰', href: 'https://vizard-clips-app.vercel.app/articles' },
+  { id: 'video', label: 'Video Cue System', icon: '🎬', href: 'https://vizard-clips-app.vercel.app/dashboard' },
+  { id: 'ideas', label: 'Idea Board', icon: '💡', href: 'https://vizard-clips-app.vercel.app/ideas' },
   { id: 'wishlist', label: 'Wish List', icon: '⭐', href: '#' },
   { id: 'resources', label: 'Resource Library', icon: '📚', href: '#' },
-  { id: 'bookmarks', label: 'Bookmark Manager', icon: '🔖', href: 'https://vizard-clips-dashboard.vercel.app/bookmarks' },
+  { id: 'bookmarks', label: 'Bookmark Manager', icon: '🔖', href: 'https://vizard-clips-app.vercel.app/bookmarks' },
 ];
 
 export default function NavigationSidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [currentPath, setCurrentPath] = useState('');
-  
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentPath(window.location.pathname);
-    }
-  }, []);
 
   return (
     <div 
-      className={`min-h-screen h-full bg-gray-900 border-r border-gray-800 flex flex-col transition-all duration-300 ${
-        isExpanded ? 'w-48' : 'w-14'
-      }`}
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
-      style={{ minHeight: '100vh', background: '#111827', borderRight: '1px solid #1f2937' }}
+      style={{ 
+        width: '64px',
+        minHeight: '100vh', 
+        background: '#0a0a0a', 
+        borderRight: '1px solid #1f2937',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
     >
-      {/* Toggle Button */}
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        style={{
-          padding: '12px',
-          color: '#9ca3af',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          transition: 'color 0.2s'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
-        onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
-      >
-        <svg 
-          style={{ width: '20px', height: '20px', transform: isExpanded ? 'rotate(0deg)' : 'rotate(180deg)', transition: 'transform 0.3s' }}
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-        </svg>
-      </button>
+      {/* Logo/Top */}
+      <div style={{
+        height: '64px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottom: '1px solid #1f2937'
+      }}>
+        <span style={{ fontSize: '28px' }}>🎬</span>
+      </div>
 
       {/* Nav Items */}
       <nav style={{ flex: 1, paddingTop: '16px', paddingBottom: '16px' }}>
@@ -71,12 +52,12 @@ export default function NavigationSidebar() {
               position: 'relative',
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
-              padding: '12px',
-              color: '#d1d5db',
+              justifyContent: 'center',
+              height: '56px',
+              color: item.id === 'team' ? '#fff' : '#9ca3af',
               textDecoration: 'none',
               transition: 'background 0.2s, color 0.2s',
-              background: item.id === 'team' ? 'rgba(139, 92, 246, 0.1)' : 'transparent',
+              background: item.id === 'team' ? 'rgba(139, 92, 246, 0.3)' : 'transparent',
               borderRight: item.id === 'team' ? '2px solid #8b5cf6' : 'none'
             }}
             onMouseEnter={(e) => {
@@ -85,23 +66,16 @@ export default function NavigationSidebar() {
               setHoveredItem(item.id);
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = item.id === 'team' ? 'rgba(139, 92, 246, 0.1)' : 'transparent';
-              e.currentTarget.style.color = '#d1d5db';
+              e.currentTarget.style.background = item.id === 'team' ? 'rgba(139, 92, 246, 0.3)' : 'transparent';
+              e.currentTarget.style.color = item.id === 'team' ? '#fff' : '#9ca3af';
               setHoveredItem(null);
             }}
           >
             {/* Icon */}
-            <span style={{ fontSize: '20px', flexShrink: 0 }}>{item.icon}</span>
+            <span style={{ fontSize: '20px' }}>{item.icon}</span>
             
-            {/* Label - shown when expanded */}
-            {isExpanded && (
-              <span style={{ fontSize: '14px', fontWeight: 500, whiteSpace: 'nowrap', overflow: 'hidden' }}>
-                {item.label}
-              </span>
-            )}
-
-            {/* Tooltip - shown when collapsed and hovered */}
-            {!isExpanded && hoveredItem === item.id && (
+            {/* Tooltip */}
+            {hoveredItem === item.id && (
               <div style={{
                 position: 'absolute',
                 left: '100%',
@@ -113,7 +87,7 @@ export default function NavigationSidebar() {
                 borderRadius: '8px',
                 whiteSpace: 'nowrap',
                 zIndex: 50,
-                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
                 border: '1px solid #374151'
               }}>
                 {item.label}
@@ -133,16 +107,6 @@ export default function NavigationSidebar() {
           </a>
         ))}
       </nav>
-
-      {/* Logo/Bottom */}
-      <div style={{ padding: '12px', borderTop: '1px solid #1f2937' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '20px', flexShrink: 0 }}>🎬</span>
-          {isExpanded && (
-            <span style={{ fontSize: '14px', fontWeight: 'bold', color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden' }}>Pacino</span>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
