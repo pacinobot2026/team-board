@@ -3,16 +3,16 @@
 import { useState } from 'react';
 
 const NAV_ITEMS = [
-  { id: 'command-center', label: 'OpenClaw Command Center', icon: '🎛️', href: 'https://dashboard-gilt-one-zc4y5uu95v.vercel.app' },
-  { id: 'custom-commands', label: 'Custom Command Engine', icon: '⚙️', href: '#' },
-  { id: 'team', label: 'Team Board', icon: '👥', href: 'https://kanban-rho-ivory.vercel.app' },
-  { id: 'projects', label: 'Project Board', icon: '📋', href: 'https://kanban-rho-ivory.vercel.app' },
-  { id: 'articles', label: 'Article Board', icon: '📰', href: 'https://vizard-clips-app.vercel.app/articles' },
-  { id: 'video', label: 'Video Cue System', icon: '🎬', href: 'https://vizard-clips-app.vercel.app/dashboard' },
-  { id: 'ideas', label: 'Idea Board', icon: '💡', href: 'https://vizard-clips-app.vercel.app/ideas' },
-  { id: 'wishlist', label: 'Wish List', icon: '⭐', href: '#' },
-  { id: 'resources', label: 'Resource Library', icon: '📚', href: '#' },
-  { id: 'bookmarks', label: 'Bookmark Manager', icon: '🔖', href: 'https://vizard-clips-app.vercel.app/bookmarks' },
+  { id: 'command-center', label: 'Command Center', icon: '⚡', href: 'https://dashboard-gilt-one-zc4y5uu95v.vercel.app' },
+  { id: 'custom-commands', label: 'Custom Commands', icon: '⌘', href: '#' },
+  { id: 'team', label: 'Team Board', icon: '◉', href: 'https://kanban-rho-ivory.vercel.app' },
+  { id: 'projects', label: 'Project Board', icon: '▦', href: 'https://kanban-rho-ivory.vercel.app' },
+  { id: 'articles', label: 'Article Board', icon: '□', href: 'https://vizard-clips-app.vercel.app/articles' },
+  { id: 'video', label: 'Video Cue System', icon: '▶', href: 'https://vizard-clips-app.vercel.app/dashboard' },
+  { id: 'ideas', label: 'Idea Board', icon: '◈', href: 'https://vizard-clips-app.vercel.app/ideas' },
+  { id: 'wishlist', label: 'Wish List', icon: '☆', href: '#' },
+  { id: 'resources', label: 'Resource Library', icon: '⊞', href: '#' },
+  { id: 'bookmarks', label: 'Bookmark Manager', icon: '⊡', href: 'https://vizard-clips-app.vercel.app/bookmarks' },
 ];
 
 export default function NavigationSidebar() {
@@ -21,7 +21,7 @@ export default function NavigationSidebar() {
   return (
     <div 
       style={{ 
-        width: '64px',
+        width: '56px',
         minHeight: '100vh', 
         background: '#0a0a0a', 
         borderRight: '1px solid #1f2937',
@@ -29,19 +29,29 @@ export default function NavigationSidebar() {
         flexDirection: 'column'
       }}
     >
-      {/* Logo/Top */}
+      {/* Logo */}
       <div style={{
-        height: '64px',
+        height: '56px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         borderBottom: '1px solid #1f2937'
       }}>
-        <span style={{ fontSize: '28px' }}>🎬</span>
+        <div style={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '8px',
+          background: 'linear-gradient(135deg, #a855f7 0%, #3b82f6 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <span style={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}>P</span>
+        </div>
       </div>
 
       {/* Nav Items */}
-      <nav style={{ flex: 1, paddingTop: '16px', paddingBottom: '16px' }}>
+      <nav style={{ flex: 1, paddingTop: '8px', paddingBottom: '8px' }}>
         {NAV_ITEMS.map((item) => (
           <a
             key={item.id}
@@ -53,26 +63,27 @@ export default function NavigationSidebar() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '56px',
-              color: item.id === 'team' ? '#fff' : '#9ca3af',
+              height: '48px',
+              color: item.id === 'team' ? '#c084fc' : '#6b7280',
               textDecoration: 'none',
-              transition: 'background 0.2s, color 0.2s',
-              background: item.id === 'team' ? 'rgba(139, 92, 246, 0.3)' : 'transparent',
-              borderRight: item.id === 'team' ? '2px solid #8b5cf6' : 'none'
+              transition: 'all 0.2s',
+              background: item.id === 'team' ? '#111827' : 'transparent',
+              fontSize: '18px',
+              fontWeight: '300'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#1f2937';
+              e.currentTarget.style.background = '#111827';
               e.currentTarget.style.color = '#fff';
               setHoveredItem(item.id);
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = item.id === 'team' ? 'rgba(139, 92, 246, 0.3)' : 'transparent';
-              e.currentTarget.style.color = item.id === 'team' ? '#fff' : '#9ca3af';
+              e.currentTarget.style.background = item.id === 'team' ? '#111827' : 'transparent';
+              e.currentTarget.style.color = item.id === 'team' ? '#c084fc' : '#6b7280';
               setHoveredItem(null);
             }}
           >
             {/* Icon */}
-            <span style={{ fontSize: '20px' }}>{item.icon}</span>
+            <span>{item.icon}</span>
             
             {/* Tooltip */}
             {hoveredItem === item.id && (
@@ -80,14 +91,15 @@ export default function NavigationSidebar() {
                 position: 'absolute',
                 left: '100%',
                 marginLeft: '8px',
-                padding: '8px 12px',
-                background: '#1f2937',
+                padding: '6px 12px',
+                background: '#111827',
                 color: '#fff',
-                fontSize: '14px',
-                borderRadius: '8px',
+                fontSize: '12px',
+                fontWeight: '500',
+                borderRadius: '6px',
                 whiteSpace: 'nowrap',
                 zIndex: 50,
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
                 border: '1px solid #374151'
               }}>
                 {item.label}
@@ -95,12 +107,12 @@ export default function NavigationSidebar() {
                   position: 'absolute',
                   left: 0,
                   top: '50%',
-                  transform: 'translate(-4px, -50%)',
+                  transform: 'translate(-5px, -50%)',
                   width: 0,
                   height: 0,
-                  borderTop: '4px solid transparent',
-                  borderBottom: '4px solid transparent',
-                  borderRight: '4px solid #1f2937'
+                  borderTop: '5px solid transparent',
+                  borderBottom: '5px solid transparent',
+                  borderRight: '5px solid #111827'
                 }} />
               </div>
             )}
