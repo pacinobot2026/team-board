@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { id: 'control', label: 'Command Center', icon: '⚡', href: 'https://nicelycontrol.com' },
   { id: 'openclaw', label: 'Custom Commands', icon: '⌘', href: 'https://nicelycontrol.com/commands' },
   { id: 'businesses', label: 'Business Board', icon: '◉', href: 'https://vizard-clips-app.vercel.app/businesses' },
-  { id: 'team', label: 'Team Board', icon: '▦', href: 'https://kanban-rho-ivory.vercel.app' },
+  { id: 'team', label: 'Team Board', icon: '▦', href: '/' },
   { id: 'vault', label: 'Operator Vault', icon: '□', href: 'https://vizard-clips-app.vercel.app/vault' },
   { id: 'projects', label: 'Project Board', icon: '▶', href: 'https://vizard-clips-app.vercel.app/projects' },
   { id: 'articles', label: 'Article Board', icon: '◈', href: 'https://vizard-clips-app.vercel.app/articles' },
