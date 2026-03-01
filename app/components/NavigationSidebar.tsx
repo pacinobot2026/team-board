@@ -5,15 +5,15 @@ import { useState } from 'react';
 const NAV_ITEMS = [
   { id: 'control', label: 'Command Center', icon: '⚡', href: 'https://nicelycontrol.com' },
   { id: 'openclaw', label: 'Custom Commands', icon: '⌘', href: 'https://nicelycontrol.com/commands' },
-  { id: 'businesses', label: 'Business Board', icon: '◉', href: 'https://vizard-clips-app.vercel.app/businesses' },
-  { id: 'team', label: 'Team Board', icon: '▦', href: '/' },
-  { id: 'vault', label: 'Operator Vault', icon: '□', href: 'https://vizard-clips-app.vercel.app/vault' },
-  { id: 'projects', label: 'Project Board', icon: '▶', href: 'https://vizard-clips-app.vercel.app/projects' },
-  { id: 'articles', label: 'Article Board', icon: '◈', href: 'https://vizard-clips-app.vercel.app/articles' },
-  { id: 'ideas', label: 'Idea Board', icon: '☆', href: 'https://vizard-clips-app.vercel.app/ideas' },
-  { id: 'video', label: 'Video Cue', icon: '⊞', href: 'https://vizard-clips-app.vercel.app/dashboard' },
-  { id: 'shopping', label: 'Wish List', icon: '⊡', href: 'https://vizard-clips-app.vercel.app/shopping' },
-  { id: 'bookmarks', label: 'Resource Library', icon: '▣', href: 'https://vizard-clips-app.vercel.app/bookmarks' },
+  { id: 'businesses', label: 'Business Board', icon: '◉', href: 'https://boards.nicelycontrol.com/businesses' },
+  { id: 'team', label: 'Team Board', icon: '▦', href: 'https://kanban-rho-ivory.vercel.app' },
+  { id: 'vault', label: 'Operator Vault', icon: '□', href: 'https://boards.nicelycontrol.com/vault' },
+  { id: 'projects', label: 'Project Board', icon: '▶', href: 'https://boards.nicelycontrol.com/projects' },
+  { id: 'articles', label: 'Article Board', icon: '◈', href: 'https://boards.nicelycontrol.com/articles' },
+  { id: 'ideas', label: 'Idea Board', icon: '☆', href: 'https://boards.nicelycontrol.com/ideas' },
+  { id: 'video', label: 'Video Cue', icon: '⊞', href: 'https://boards.nicelycontrol.com/dashboard' },
+  { id: 'shopping', label: 'Wish List', icon: '⊡', href: 'https://boards.nicelycontrol.com/shopping' },
+  { id: 'bookmarks', label: 'Resource Library', icon: '▣', href: 'https://boards.nicelycontrol.com/bookmarks' },
 ];
 
 export default function NavigationSidebar() {
