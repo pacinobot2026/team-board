@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 const NAV_ITEMS = [
-  { id: 'control', label: 'Command Center', icon: '⚡', href: 'https://dashboard-gilt-one-zc4y5uu95v.vercel.app' },
-  { id: 'openclaw', label: 'Custom Commands', icon: '⌘', href: 'https://dashboard-gilt-one-zc4y5uu95v.vercel.app/commands' },
+  { id: 'control', label: 'Command Center', icon: '⚡', href: 'https://nicelycontrol.com' },
+  { id: 'openclaw', label: 'Custom Commands', icon: '⌘', href: 'https://nicelycontrol.com/commands' },
   { id: 'businesses', label: 'Business Board', icon: '◉', href: 'https://vizard-clips-app.vercel.app/businesses' },
   { id: 'team', label: 'Team Board', icon: '▦', href: 'https://kanban-rho-ivory.vercel.app' },
   { id: 'vault', label: 'Operator Vault', icon: '□', href: 'https://vizard-clips-app.vercel.app/vault' },
